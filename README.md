@@ -18,6 +18,12 @@ cd ShopCart-Ecommerce-Backend
 npm install
 ```
 
+4. Create a new `.env` file in root directory of the project and then add the following environment variables to the `.env` file
+
+```
+PORT = value_of_the_socket_port
+```
+
 4. Turn up the server
 
 ```
