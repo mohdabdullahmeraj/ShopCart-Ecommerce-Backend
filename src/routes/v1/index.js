@@ -6,6 +6,6 @@ const pingRouterV1 = require('./ping_router_v1')
 const productRouter = require('./product_router')
 
 v1Router.use('/ping', pingRouterV1)
-v1Router.use('/product', productRouter)
+v1Router.use('/products', productRouter)
 
 module.exports = v1Router
