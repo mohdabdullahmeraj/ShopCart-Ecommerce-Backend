@@ -5,7 +5,18 @@ class FakeStoreRepository{
         try{
     
             const response = await axios.get('https://fakestoreapi.com/products')
-            return response
+            return response.data
+    
+        }catch(err){
+            console.log("Something happened", err)
+        }
+    }
+
+    getProduct = async (id) => {
+        try{
+    
+            const response = await axios.get('https://fakestoreapi.com/products/'+id)
+            return response.data
     
         }catch(err){
             console.log("Something happened", err)

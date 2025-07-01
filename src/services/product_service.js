@@ -16,11 +16,12 @@ class ProductService {
     
     getProducts = async() => {
         const response = await this.repository.getProducts()
-        return response.data        
+        return response        
     }
     
-    getProduct = (id) => {
-        return products.filter(product => product.id == id)[0]
+    getProduct = async(id) => {
+        const response = await this.repository.getProduct(id)
+        return response
     }
 }
 

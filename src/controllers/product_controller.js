@@ -45,10 +45,10 @@ const getProducts = async (req, res) =>{
     }
 }
 
-const getProduct = (req, res) => {
+const getProduct = async (req, res) => {
     try{
 
-       const response = productService.getProduct(req.params.id)
+       const response = await productService.getProduct(req.params.id)
         return res
             .status(StatusCodes.OK)
             .json({
