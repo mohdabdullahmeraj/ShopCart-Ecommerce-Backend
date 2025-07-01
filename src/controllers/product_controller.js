@@ -1,25 +1,19 @@
 const { StatusCodes, ReasonPhrases } = require("http-status-codes")
+const productService = require('../services/product_service')
 
 const createProduct = (req, res) => {
 
     try{
 
         // db processing
-
+        const response = productService.createProduct(req.body)
         return res
             .status(StatusCodes.CREATED)
             .json({
                 success: true,
                 error: {},
                 message: ReasonPhrases.CREATED +' Product',
-                data: {
-                    id: Math.random() * (20),
-                    title: req.body.title,
-                    description: req.body.description,
-                    category: req.body.category,
-                    price: req.body.price,
-                    image: req.body.image
-                }
+                data: response
         })
 
 
@@ -30,6 +24,44 @@ const createProduct = (req, res) => {
 
 }
 
+const getProducts = (req, res) =>{
+    try{
+
+        const response = productService.getProducts()
+        return res
+            .status(StatusCodes.OK)
+            .json({
+                success: true,
+                error: {},
+                message: 'Successfully fetched Products',
+                data: response
+        })
+
+    }catch(err){
+        console.log("Something went wrong", err)
+    }
+}
+
+const getProduct = (req, res) => {
+    try{
+
+       const response = productService.getProduct(req.params.id)
+        return res
+            .status(StatusCodes.OK)
+            .json({
+                success: true,
+                error: {},
+                message: 'Successfully fetched Product',
+                data: response
+        }) 
+
+    }catch(err){
+        console.log("Something happened", err)
+    }
+}
+
 module.exports = {
-    createProduct
+    createProduct,
+    getProducts,
+    getProduct
 }
