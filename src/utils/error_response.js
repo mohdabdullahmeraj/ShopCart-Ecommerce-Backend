@@ -1,8 +1,8 @@
-const errorResponse = (message, error) => {
+const errorResponse = (reasonPhrase, error) => {
     return{
         success: false, 
         data: {},
-        message: message,
+        message: reasonPhrase,
         error: error
     }
 }

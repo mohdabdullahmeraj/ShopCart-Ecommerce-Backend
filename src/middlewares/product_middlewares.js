@@ -1,26 +1,36 @@
 const { badRequest } = require('../errors/bad_request_error')
 const {errorResponse} = require('../utils/error_response')
-
+const {StatusCodes, ReasonPhrases} = require('http-status-codes')
 
 createProductValidator = (req, res, next) => {
     if(!req.body.title){
-        return res.status(400).json(errorResponse('Title not present in the incoming request', new badRequest('Title')))
+        return res
+            .status(StatusCodes.BAD_REQUEST)
+            .json(errorResponse(ReasonPhrases.BAD_REQUEST, new badRequest('Title')))
     }
 
     if(!req.body.description){
-        return res.status(400).json(errorResponse('Description not present in the incoming request', new badRequest('Description')))
+        return res
+            .status(StatusCodes.BAD_REQUEST)
+            .json(errorResponse(ReasonPhrases.BAD_REQUEST, new badRequest('Description')))
     }
 
     if(!req.body.price){
-        return res.status(400).json(errorResponse('Price not present in the incoming request', new badRequest('Price')))
+        return res
+            .status(StatusCodes.BAD_REQUEST)
+            .json(errorResponse(ReasonPhrases.BAD_REQUEST, new badRequest('Price')))
     }
 
     if(!req.body.image){
-        return res.status(400).json(errorResponse('Image not present in the incoming request', new badRequest('Image')))
+        return res
+            .status(StatusCodes.BAD_REQUEST)
+            .json(errorResponse(ReasonPhrases.BAD_REQUEST, new badRequest('Image')))
     }
 
     if(!req.body.category){
-        return res.status(400).json(errorResponse('Category not present in the incoming request', new badRequest('Category')))
+        return res
+            .status(StatusCodes.BAD_REQUEST)
+            .json(errorResponse(ReasonPhrases.BAD_REQUEST, new badRequest('Category')))
     }
 
     next() 
