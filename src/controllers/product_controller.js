@@ -4,12 +4,11 @@ const FakeStoreRepository = require("../repositories/fake_store_repository")
 
 const productService = new ProductService(new FakeStoreRepository)
 
-const createProduct = (req, res) => {
+const createProduct = async(req, res) => {
 
     try{
 
-        // db processing
-        const response = productService.createProduct(req.body)
+        const response = await productService.createProduct(req.body)
         return res
             .status(StatusCodes.CREATED)
             .json({

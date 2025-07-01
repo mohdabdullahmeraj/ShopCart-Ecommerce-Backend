@@ -1,17 +1,10 @@
-products = []
-
 class ProductService {
     constructor (repository){
         this.repository = repository
     }
-    createProduct = (product) => {
-        const newProduct = {
-            id: products.length,
-            ...product
-        }    
-        
-        products.push(newProduct)
-        return newProduct
+    createProduct = async(product) => {
+        const response = await this.repository.createProduct(product)
+        return response
     }
     
     getProducts = async() => {

@@ -22,6 +22,18 @@ class FakeStoreRepository{
             console.log("Something happened", err)
         }
     }
+
+    createProduct = async(product) => {
+        try{
+
+            const response = await axios.post('https://fakestoreapi.com/products', product)
+            return response.data
+
+        }
+        catch(err){
+            console.log("Something happened", err)
+        }
+    }
     
 }
 
