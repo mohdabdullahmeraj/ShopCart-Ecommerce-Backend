@@ -1,5 +1,8 @@
 const { StatusCodes, ReasonPhrases } = require("http-status-codes")
-const productService = require('../services/product_service')
+const ProductService = require('../services/product_service')
+const FakeStoreRepository = require("../repositories/fake_store_repository")
+
+const productService = new ProductService(new FakeStoreRepository)
 
 const createProduct = (req, res) => {
 
@@ -24,10 +27,10 @@ const createProduct = (req, res) => {
 
 }
 
-const getProducts = (req, res) =>{
+const getProducts = async (req, res) =>{
     try{
 
-        const response = productService.getProducts()
+        const response = await productService.getProducts()
         return res
             .status(StatusCodes.OK)
             .json({
