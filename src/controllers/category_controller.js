@@ -13,7 +13,7 @@ const getCategories = async(req, res) => {
             .json({
                 success: true,
                 error: {},
-                message: ReasonPhrases.OK,
+                message: "Successfully fetched categories",
                 data: response
             })
 
@@ -33,7 +33,7 @@ const getCategory = async(req, res) => {
             .json({
                 success: true,
                 error: {},
-                message: ReasonPhrases.OK,
+                message: "Successfully fetched category",
                 data: response
             })
 
@@ -64,8 +64,27 @@ const createCategory = async(req, res) => {
 
 }
 
+const deleteCategory = async(req, res) => {
+    try{
+
+        const response = await categoryService.deleteCategory(req.params.id)
+        return res
+            .status(StatusCodes.OK)
+            .json({
+                success: true,
+                error: {},
+                message: "Successfully deleted category",
+                data: response
+            })
+
+    }catch(err){
+        console.log("Something Happened", err)
+    }   
+}
+
 module.exports = {
     getCategories,
     getCategory,
-    createCategory
+    createCategory,
+    deleteCategory
 }

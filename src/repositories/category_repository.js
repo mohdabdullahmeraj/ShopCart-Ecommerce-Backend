@@ -1,3 +1,4 @@
+const { where } = require('sequelize')
 const Category = require('../models/category')
 
 class CategoryRepository{
@@ -35,6 +36,21 @@ class CategoryRepository{
         }
         catch(err){
             console.log("Something happened", err)
+        }
+    }
+
+    deleteCategory = async(categoryID) => {
+        try{
+
+            const response = await Category.destroy({
+                where: {
+                    id: categoryID
+                }
+            })
+            return response
+
+        }catch(err){
+            console.log("Something Happened", err)
         }
     }
     

@@ -17,6 +17,11 @@ class CategoryService {
         const response = await this.repository.createCategory(category.name, category.description)
         return response
     }
+
+    deleteCategory = async(categoryID) => {
+        const response = await this.repository.deleteCategory(categoryID)
+        return response
+    }
 }
 
 
