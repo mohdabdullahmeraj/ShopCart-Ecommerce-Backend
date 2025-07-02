@@ -28,7 +28,7 @@ app.use('/api', ApiRouter)
 app.listen(PORT, async() => {
     console.log("Server for shop cart is up")
 
-    await db.sync({alter: true})
+    await db.sync()
     console.log('db connected')
 
     // const res = await Category.create({

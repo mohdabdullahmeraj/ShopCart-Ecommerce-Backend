@@ -9,7 +9,8 @@ class CategoryRepository{
             return response
     
         }catch(err){
-            console.log("Something happened", err)
+            console.log(err)
+            throw err
         }
     }
 
@@ -20,7 +21,8 @@ class CategoryRepository{
             return response
     
         }catch(err){
-            console.log("Something happened", err)
+            console.log(err)
+            throw err
         }
     }
 
@@ -35,7 +37,8 @@ class CategoryRepository{
 
         }
         catch(err){
-            console.log("Something happened", err)
+            console.log(err)
+            throw err
         }
     }
 
@@ -50,7 +53,8 @@ class CategoryRepository{
             return response
 
         }catch(err){
-            console.log("Something Happened", err)
+            console.log(err)
+            throw err
         }
     }
     

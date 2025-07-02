@@ -1,26 +1,58 @@
+const { internalServerError } = require("../errors/internal_server_error")
+const { notFound } = require("../errors/not_found_error")
+
 class CategoryService {
     constructor (repository){
         this.repository = repository
     }
 
     getCategories = async() => {
-        const response = await this.repository.getCategories()
-        return response
+        try{
+            const response = await this.repository.getCategories()
+            return response
+        }catch(err){
+            console.log("CategorySerice: ",err)
+            throw new internalServerError
+        }
     }
 
     getCategory = async(id) => {
-        const response = await this.repository.getCategory(id)
-        return response
+        try{
+            const response = await this.repository.getCategory(id)
+            if(!response) { 
+                console.log("CategoryService: ", categoryId, "not found");
+                throw new notFound("Category", "id", categoryId);
+            }
+            return response;
+        }catch(err){
+            if(err.name === "NotFoundError") {
+                throw err;
+            }
+            console.log("CategorySerice: ",err);
+            throw new internalServerError();
+        }
     }
 
     createCategory = async(category) => {
-        const response = await this.repository.createCategory(category.name, category.description)
-        return response
+        try{
+            const response = await this.repository.createCategory(category.name, category.description)
+            return response
+
+        }catch(err){
+            console.log("CategorySerice: ",err)
+            throw new internalServerError
+        }
     }
 
     deleteCategory = async(categoryID) => {
-        const response = await this.repository.deleteCategory(categoryID)
-        return response
+        try{
+            const response = await this.repository.deleteCategory(categoryID)
+            return response
+
+        }catch(err){
+            console.log("CategorySerice: ",err)
+            throw new internalServerError
+        }
     }
 }
 

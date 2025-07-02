@@ -1,17 +1,17 @@
 const { ReasonPhrases, StatusCodes } = require("http-status-codes")
 
-class badRequest extends Error{
+class internalServerError extends Error{
     constructor(propetyMissing){
         const errorMessage = `${propetyMissing} is missing from the request body`
         super(errorMessage)
-        this.statusCode = StatusCodes.BAD_REQUEST
-        this.reason = ReasonPhrases.BAD_REQUEST
+        this.statusCode = StatusCodes.INTERNAL_SERVER_ERROR
+        this.reason = ReasonPhrases.INTERNAL_SERVER_ERROR
         this.errorMessage = errorMessage
-        this.name = "BadRequest"
+        this.name = "InternalServerError"
     }
 
 }
 
 module.exports = {
-    badRequest
+    internalServerError
 }
