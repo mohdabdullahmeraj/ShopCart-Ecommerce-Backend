@@ -4,7 +4,7 @@ class CategoryRepository{
     getCategories = async () => {
         try{
     
-            const response = await Category.findall()
+            const response = await Category.findAll()
             return response
     
         }catch(err){
@@ -15,7 +15,7 @@ class CategoryRepository{
     getCategory = async (id) => {
         try{
     
-            const response = await Category.findbyPK(id) 
+            const response = await Category.findByPk(id) 
             return response
     
         }catch(err){
